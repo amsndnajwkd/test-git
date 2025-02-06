@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #5f757c;
+
+        }
+        
+        .todo-container {
+            background-color: #c1cfcf;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            width: 340px;
+            margin: 0% auto;
+            /* position: absolute;
+            right: 50%; */
+        }
+
+        button, input {
+            margin: 2%;
+        }
+
+    </style>
+</head>
+
+<body>
+  <div class="todo-container">
+    <button onclick="window.location.href='/logout'">로그아웃</button>
+    <hr>
+    <h2>할 일 목록 </h2>
+    <input type="text" placeholder="리스트를 적어주세요.">
+    <button id="add-btn">추가하기 [Enter키]</button>
+    <hr/>
+    <div id="h-list"></div>
+            <!-- 모두 지우기 버튼 추가 -->
+            <button id="clear-all">모두 지우기</button> 
+            <button id="clear-sel">선택 지우기</button> 
+  </div>
+
+    <script>
+
+            const clearBtn = document.querySelector('#clear-all'); 
+            // clearBtn라는 이름으로 js에 활성화 = 문서에서.선택할(모두 지우기 버튼)을 
+            clearBtn.addEventListener('click', () => {
+            //clearBtn에.이벤트인식('클릭', () => {이렇게 하겠다})
+                list.innerHTML = null; 
+                // list의.모든 자식HTML요소 = 제거
+            });
+
+
+        const input = document.querySelector('input');
+        const btn = document.querySelector('#add-btn');
+        const list = document.querySelector('#h-list');
+        
+        let inputData;
+
+        input.addEventListener('keyup', (e) => {
+            inputData = e.currentTarget.value
+            if (e.keyCode === 13) {
+            document.getElementById("add-btn").click();
+        }
+        })
+
+
+
+        const clearSelectedBtn = document.querySelector('#clear-sel');
+
+        clearSelectedBtn.addEventListener('click', () => {
+        const checkboxes = document.querySelectorAll('#h-list input[type="checkbox"]');
+        checkboxes.forEach((checkbox) => {
+            if (checkbox.checked) {
+                const divToRemove = checkbox.parentElement;
+                divToRemove.remove();
+            }
+        });
+        });
+
+
+
+
+
+
+        btn.addEventListener('click', () => {
+            if (inputData) {
+                const vdiv = document.createElement('div') // 라인 하나 추가
+                const vcheck = document.createElement('input') // 체크박스 추가
+                const vspan = document.createElement('span'); // 추가된 내용
+                const vbutton = document.createElement('button'); // 버튼 추가
+                list.appendChild(vdiv).append(vcheck, vspan, vbutton);
+                vcheck.type = 'checkbox';
+                vspan.textContent = inputData;
+                vbutton.textContent = '삭제'
+                input.value = inputData = null; // 내용 비우기
+
+                vcheck.addEventListener('click', (e) => {
+                    vdiv.style.color = e.currentTarget.checked ? 'orange' : 'black' // 색넣기
+                    vdiv.style.textDecoration = e.currentTarget.checked ? 'line-through' : 'none' // 가운데 줄긋기
+                    console.log(e.currentTarget.checked)
+                })
+
+                vbutton.addEventListener('click', (e) => {
+                    if (e.target) list.removeChild(vdiv)
+                })
+
+
+            } else (alert('내용을 입력하세요.'))
+
+        })
+
+        
+
+    </script>
+</body>
+
+</html>

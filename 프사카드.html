@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        body {
+            background-color: rgb(200, 230, 0);
+            padding-top: 8rem;
+            display: flex;
+            justify-content: center;
+
+        }
+
+        .card {
+            height: 500px;
+            width: 400px;
+            background-color: #fff;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            font: 1.5rem rgba(0, 0, 0, 0.8)
+        }
+
+        .banner {
+            background-image: url("https://watermark.lovepik.com/photo/20211208/large/lovepik-plum-blossoms-in-spring-picture_501579735.jpg");
+            background-size: 55%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile {
+            width: 8rem;
+            height: 8rem;
+            background-image: url("https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/EAF7/production/_121315106_3.jpg.webp");
+            background-size: 150px;
+            border-radius: 50%;
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+            transform: translateY(50%);
+            transition: transform 1500ms ease;
+        }
+
+        .profile:hover {
+            transform: translateY(50%) scale(5.3);
+        }
+
+        .name {
+            text-align: center;
+            padding-top: 68px;
+        }
+
+        .follow-btn {
+            padding: 0 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .follow-btn button {
+            font-size: 1.1rem;
+            font-weight: bold;
+            background-color: rgb(25, 128, 42);
+            border: none;
+            padding: 1rem;
+            outline: none;
+            border-radius: 50px;
+        }
+
+        .follow-btn button:hover {
+            background-color: rgb(26, 175, 21);
+            transform: scale(1.1);
+        }
+
+        .desc {
+            padding: 1.5rem;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        h2 {
+            padding: 1rem;
+            font-weight: bold;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="banner">
+            <div class="profile"></div>
+        </div>
+        <h2 class="name">사슴이</h2>
+        <div class="follow-btn"><button>Button</button></div>
+        <div class="desc">야생의 사슴이에요! 🦌🌸</br>경쾌한 발걸음으로 숲 속을 뛰어다니는 걸 좋아해요.</div>
+    </div>
+</body>
+
+</html>
